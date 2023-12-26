@@ -154,21 +154,21 @@ export const lsaColumns = [
     ),
   },
   {
-    accessorKey: "type",
+    accessorKey: "network_carriage_service",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Type
+          Network Carriage Service
           <CaretSortIcon className="w-4 h-4 ml-2 opacity-70 shrink-0" />
         </Button>
       );
     },
     cell: ({ row }) => (
-      <div className="text-center lowercase text-slate-800">
-        {row.getValue("type")}
+      <div className="text-center uppercase text-slate-800">
+        {row.getValue("network_carriage_service")}
       </div>
     ),
   },

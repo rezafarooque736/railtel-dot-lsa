@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
-import Title from "@/components/ui/title";
+import Title from "@/components/helpers/title";
 import { dotLsaList } from "@/data";
 import Link from "next/link";
 

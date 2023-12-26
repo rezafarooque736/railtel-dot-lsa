@@ -23,14 +23,44 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { useEffect, useState } from "react";
+import UpdateModal from "./update-modal";
+import { Pencil2Icon } from "@radix-ui/react-icons";
 
 export function DataTable({ columns, data, tableHeaderText }) {
   const [columnFilters, setColumnFilters] = useState([]);
   const [globalFilter, setGlobalFilter] = useState("");
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleUpdateButtonClick = (row) => {
+    setOpenModal(true);
+    setSelectedRow(row);
+  };
+
+  const closeUpdateModal = () => {
+    setOpenModal(false);
+    setSelectedRow(null); // Reset selectedRow when the modal is closed
+  };
 
   const table = useReactTable({
     data,
-    columns,
+    columns: [
+      ...columns,
+      {
+        accessorKey: "update",
+        header: "Action",
+        cell: ({ row }) => (
+          <Button
+            variant="outline"
+            className="hover:text-primary"
+            size="icon"
+            onClick={() => handleUpdateButtonClick(row.original)}
+          >
+            <Pencil2Icon className="w-5 h-5" />
+          </Button>
+        ),
+      },
+    ],
     state: {
       columnFilters,
       globalFilter,
@@ -60,6 +90,14 @@ export function DataTable({ columns, data, tableHeaderText }) {
         />
       </div>
       <div className="border rounded-md">
+        {/* Conditionally render UpdateModal */}
+        {selectedRow && (
+          <UpdateModal
+            open={openModal}
+            closeUpdateModal={closeUpdateModal} // Close the modal and reset selectedRow
+            selectedRow={selectedRow}
+          />
+        )}
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

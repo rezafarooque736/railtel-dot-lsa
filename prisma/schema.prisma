@@ -26,7 +26,7 @@ model User {
 
 model Dotlsa {
   id                            String    @id @default(cuid())
-  service_id                    String?   @unique
+  service_id                    String    @unique
   organisation_name             String
   network_ip_address            String
   date_since_network_ip_address DateTime
@@ -37,7 +37,7 @@ model Dotlsa {
   phone_no                      String
   address                       String
   state                         String
-  type                          String?
+  network_carriage_service      String?
   routing_protocol              String?
   createdAt                     DateTime  @default(now())
   updatedAt                     DateTime  @updatedAt

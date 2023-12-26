@@ -17,7 +17,7 @@ CREATE TABLE "users" (
 -- CreateTable
 CREATE TABLE "dotlsa" (
     "id" TEXT NOT NULL,
-    "service_id" TEXT,
+    "service_id" TEXT NOT NULL,
     "organisation_name" TEXT NOT NULL,
     "network_ip_address" TEXT NOT NULL,
     "date_since_network_ip_address" TIMESTAMP(3) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE "dotlsa" (
     "phone_no" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "state" TEXT NOT NULL,
-    "type" TEXT,
+    "network_carriage_service" TEXT,
     "routing_protocol" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,

@@ -1,6 +1,5 @@
 import { lsaColumns } from "@/components/table/Columns";
 import { DataTable } from "@/components/table/DataTable";
-import Title from "@/components/ui/title";
 import { getLSAData } from "@/services";
 
 export default async function Page({ params: { state } }) {
@@ -11,7 +10,7 @@ export default async function Page({ params: { state } }) {
         <DataTable
           columns={lsaColumns}
           data={lsaData}
-          tableHeaderText="Customer List of Internet Lease Line"
+          tableHeaderText="IBW Customer list"
         />
       </div>
     </div>

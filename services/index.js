@@ -10,3 +10,20 @@ export async function getLSAData(state) {
   const { data } = await res.json();
   return data;
 }
+
+export async function updateLSAData(data) {
+  const res = await fetch("/api/lsa/update-data", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to update data /api/lsa/update-data`);
+  }
+
+  const resData = await res.json();
+  return resData;
+}

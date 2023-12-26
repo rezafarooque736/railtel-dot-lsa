@@ -80,8 +80,8 @@ export async function POST(req) {
           );
         }
 
-        if (item.type) {
-          dataObject.type = item.type;
+        if (item.network_carriage_service) {
+          dataObject.network_carriage_service = item.network_carriage_service;
         }
 
         if (item.routing_protocol) {
@@ -104,52 +104,9 @@ export async function POST(req) {
       });
     }
 
-    let resData;
-    for (const item of jsonData) {
-      const dataObject = {
-        organisation_name: item.organisation_name,
-        network_ip_address: item.network_ip_address,
-        date_since_network_ip_address: new Date(
-          `${item.date_since_network_ip_address}`
-        ),
-        bandwidth: item.bandwidth.trim(),
-        email: item.email,
-        phone_no: item.phone_no.toString(),
-        address: item.address,
-        state: item.state,
-      };
-
-      if (item.service_id) {
-        dataObject.service_id = item.service_id.toString();
-      }
-
-      if (item.other_ip_address) {
-        dataObject.other_ip_address = item.other_ip_address;
-      }
-
-      if (item.date_since_other_ip_address) {
-        dataObject.date_since_other_ip_address = new Date(
-          `${item.date_since_other_ip_address}`
-        );
-      }
-
-      if (item.type) {
-        dataObject.type = item.type;
-      }
-
-      if (item.routing_protocol) {
-        dataObject.routing_protocol = item.routing_protocol;
-      }
-
-      resData = await db.dotlsa.create({
-        data: dataObject,
-      });
-    }
-
     return NextResponse.json(
       {
         type: "success",
-        notUnique: resData,
         message: "New data created successfully",
         success: true,
       },
