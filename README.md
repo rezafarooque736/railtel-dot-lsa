@@ -6,12 +6,29 @@ This is a portal for [RailTel dot lsa services](https://dotlsacomp.rcil.gov.in/)
 
 only admin can upload excel sheet and create new user.
 
-<div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:1.5rem">
-  <img src="./images/dot-lsa-login-page.png" alt="login page image">
-  <img src="./images/dot-lsa-home-page.png" alt="home page image">
-  <img src="./images/dot-lsa-create-user.png" alt="create user page image">
-  <img src="./images/dot-lsa-upload-excel-sheet.png" alt="upload excel sheet page image">
-</div>
+## Usage
+
+### open the portals - https://dotlsacomp.rcil.gov.in/
+
+- #### login page
+
+  - without login you can not access anything on this portal.
+    ![login page image](./images/dot-lsa-login-page.png)
+
+- #### home page
+
+  - here, you can view all list of all dot lsa in India lsa(state) wise.
+    ![home page image](./images/dot-lsa-home-page.png)
+
+- #### create new user
+
+  - admin can only be created by developer.
+  - user can not access this page, only admin can access this page, and create create new user.
+    ![create new user page image](./images/dot-lsa-create-user.png)
+
+- #### add new user
+  - Add new data , click on upload excel sheet with already defined format.
+    ![upload excel sheet page image](./images/dot-lsa-upload-excel-sheet.png)
 
 ## Technology Stacks:
 
@@ -35,18 +52,9 @@ only admin can upload excel sheet and create new user.
 ## Installation:
 
 ```bash
-npm install //install all package
+npm install //install all packages
 npm run dev //start the project
 ```
-
-Open http://localhost:3000 with your browser to see the result.
-
-## Usage
-
-- open the portals - https://dotlsacomp.rcil.gov.in/
-  - on home page you can view all list of all dot lsa in India lsa(state) wise.
-  - Add new data , click on upload excel sheet with already defined format.
-  - create new User - only admin can add new users
 
 ## Deploy on Ubuntu Server
 
