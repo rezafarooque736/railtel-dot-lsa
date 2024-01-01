@@ -3,20 +3,20 @@ import { NextResponse } from "next/server";
 
 export default withAuth(
   function middleware(req) {
-    // if (
-    //   req.nextauth.token?.role !== "admin" &&
-    //   req.nextUrl.pathname !== `/lsa/${req.nextauth.token?.dotLsaLocation}/view`
-    // ) {
-    //   return NextResponse.redirect(
-    //     new URL(`/lsa/${req.nextauth.token?.dotLsaLocation}/view`, req.url)
-    //   );
-    // }
-    // if (
-    //   req.nextUrl.pathname === "/create-user" &&
-    //   req.nextauth.token?.role !== "admin"
-    // ) {
-    //   return NextResponse.rewrite(new URL("/denied", req.url));
-    // }
+    if (
+      req.nextauth.token?.role !== "admin" &&
+      req.nextUrl.pathname !== `/lsa/${req.nextauth.token?.dotLsaLocation}/view`
+    ) {
+      return NextResponse.redirect(
+        new URL(`/lsa/${req.nextauth.token?.dotLsaLocation}/view`, req.url)
+      );
+    }
+    if (
+      req.nextUrl.pathname === "/create-user" &&
+      req.nextauth.token?.role !== "admin"
+    ) {
+      return NextResponse.rewrite(new URL("/denied", req.url));
+    }
   },
   {
     secret: process.env.NEXTAUTH_SECRET,
@@ -32,16 +32,16 @@ export default withAuth(
 );
 
 // If you only want to secure certain pages, export a config object with a matcher
-export const config = { matcher: ["/protected", "/admin"] };
-// export const config = {
-//   matcher: [
-//     /*
-//      * Match all request paths except for the ones starting with:
-//      * - api (API routes)
-//      * - _next/static (static files)
-//      * - _next/image (image optimization files)
-//      * - favicon.ico (favicon file)
-//      */
-//     "/((?!api|_next/static|_next/image|auth|favicon.ico).*)",
-//   ],
-// };
+// export const config = { matcher: ["/protected", "/admin"] };
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|auth|favicon.ico).*)",
+  ],
+};

@@ -2,7 +2,7 @@
 
 ## Introduction:
 
-This is a portal for [RailTel dot lsa services](https://dotlsacomp.rcil.gov.in/). dot stands for Department of Telecommunications and lsa stands for Licence Service Area for Telecom Operator. here is a list of all isp, nld and ild rpovided by RailTel all over India. here you can add new data with excel sheet, you do not have to craete one by one manually, jsut upload excel sheet and you can also update data manually.
+This is a portal for [RailTel dot lsa services](https://dotlsacomp.rcil.gov.in/).This is a portal for RailTel dot lsa services. dot stands for Department of Telecommunications and lsa stands for Licence Service Area for Telecom Operator. here is a list of all isp, nld and ild povided by RailTel. you can add data with excel sheet, and don't have to create manually, just upload excel sheet and you can also update data manually.
 
 only admin can upload excel sheet and create new user.
 

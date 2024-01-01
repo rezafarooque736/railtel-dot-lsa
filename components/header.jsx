@@ -17,7 +17,7 @@ export default function Header() {
 
   useEffect(() => {
     if (pathname !== "/auth/sign-in" && sessionStatus === "unauthenticated") {
-      // router.replace("/auth/sign-in?callbackUrl=/");
+      router.replace("/auth/sign-in?callbackUrl=/");
     }
   }, [sessionStatus, router]);
 
