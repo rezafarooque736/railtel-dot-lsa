@@ -8,8 +8,7 @@ export default function SignOutButton() {
     <Button
       onClick={() =>
         signOut({
-          redirect: true,
-          callbackUrl: `/auth/sign-in`,
+          redirect: false,
         })
       }
       variant={"destructive"}
