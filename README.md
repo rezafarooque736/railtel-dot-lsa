@@ -20,15 +20,17 @@ only admin can upload excel sheet and create new user.
   - here, you can view all list of all dot lsa in India lsa(state) wise.
     ![home page image](./images/dot-lsa-home-page.png)
 
-- #### create new user
+- #### add new user
 
   - admin can only be created by developer.
   - user can not access this page, only admin can access this page, and create create new user.
     ![create new user page image](./images/dot-lsa-create-user.png)
 
-- #### add new user
-  - Add new data , click on upload excel sheet with already defined format.
-    ![upload excel sheet page image](./images/dot-lsa-upload-excel-sheet.png)
+- #### upload excel sheet with already defined format
+
+- Add new data, click on upload excel sheet with already defined format.
+  ![excel-sheet-sample image](./images/excel-sheet-sample.png)
+  ![upload excel sheet page image](./images/dot-lsa-upload-excel-sheet.png)
 
 ## Technology Stacks:
 
