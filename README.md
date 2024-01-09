@@ -137,8 +137,8 @@ Now copy the below contents to this file:
 ```
 listen 443 ssl;
 ssl on;
-ssl_certificate /etc/nginx/ssl/rcil.crt;
-ssl_certificate_key /etc/nginx/ssl/rcil.key;
+ssl_certificate /etc/nginx/ssl/xyz.crt;
+ssl_certificate_key /etc/nginx/ssl/xyz.key;
 ```
 
 ```
