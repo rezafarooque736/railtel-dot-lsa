@@ -3,11 +3,17 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, { params: { state } }) {
   try {
-    const dotLsaSateData = await db.dotlsa.findMany({
-      where: {
-        state,
-      },
-    });
+    let dotLsaSateData;
+    // when state is railtel returns all data, if any other location returns data based on state.
+    if (state === "railtel") {
+      dotLsaSateData = await db.dotlsa.findMany();
+    } else {
+      dotLsaSateData = await db.dotlsa.findMany({
+        where: {
+          state,
+        },
+      });
+    }
 
     return NextResponse.json({
       type: "success",

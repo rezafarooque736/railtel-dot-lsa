@@ -7,7 +7,6 @@ import { Button } from "../ui/button";
 import { SignUpFormSchemaFrontend } from "@/schema";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import LogoIcons from "../icons/logo-icons";
 import { cn } from "@/lib/utils";
 import {
   Command,
@@ -32,7 +31,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-import { dotLsaList } from "@/data";
+import { locationList } from "@/data";
 
 const SignUpForm = () => {
   const router = useRouter();
@@ -43,7 +42,7 @@ const SignUpForm = () => {
       email: "",
       password: "",
       confirmPassword: "",
-      dot_Lsa_Location: "", // Default value for dot_Lsa_Location
+      dot_lsa_location: "", // Default value for dot_lsa_location
     },
   });
 
@@ -57,7 +56,7 @@ const SignUpForm = () => {
         name: values.name,
         email: values.email,
         password: values.password,
-        dot_Lsa_Location: values.dot_Lsa_Location,
+        dot_lsa_location: values.dot_lsa_location,
       }),
     });
 
@@ -140,10 +139,15 @@ const SignUpForm = () => {
 
           <FormField
             control={form.control}
-            name="dot_Lsa_Location"
+            name="dot_lsa_location"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Location</FormLabel>
+                <FormLabel className="my-1">
+                  Location&nbsp;
+                  <span className="text-xs text-slate-500">
+                    (Select RailTel for RailTel Internal Users Only)
+                  </span>
+                </FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -156,7 +160,7 @@ const SignUpForm = () => {
                         )}
                       >
                         {field.value
-                          ? dotLsaList.find(
+                          ? locationList.find(
                               (dotlsa) => dotlsa.value === field.value
                             )?.label
                           : "Select location"}
@@ -173,12 +177,12 @@ const SignUpForm = () => {
                       <CommandList>
                         <CommandEmpty>No location found.</CommandEmpty>
                         <CommandGroup>
-                          {dotLsaList.map((dotlsa) => (
+                          {locationList.map((dotlsa) => (
                             <CommandItem
                               value={dotlsa.label}
                               key={dotlsa.value}
                               onSelect={() => {
-                                form.setValue("dot_Lsa_Location", dotlsa.value);
+                                form.setValue("dot_lsa_location", dotlsa.value);
                               }}
                             >
                               {dotlsa.label}

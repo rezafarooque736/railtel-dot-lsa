@@ -3,19 +3,18 @@ import { NextResponse } from "next/server";
 
 export default withAuth(
   function middleware(req) {
-    if (
-      req.nextauth.token?.role !== "admin" &&
-      req.nextUrl.pathname !== `/lsa/${req.nextauth.token?.dotLsaLocation}/view`
-    ) {
-      return NextResponse.redirect(
-        new URL(`/lsa/${req.nextauth.token?.dotLsaLocation}/view`, req.url)
-      );
-    }
-    if (
-      req.nextUrl.pathname === "/create-user" &&
-      req.nextauth.token?.role !== "admin"
-    ) {
-      return NextResponse.rewrite(new URL("/denied", req.url));
+    const { token } = req.nextauth;
+    const { dotLsaLocation } = req.nextauth.token;
+
+    // Check if the user has the "admin" role
+    if (token?.role !== "admin") {
+      // Check if the user is trying to access the railtel view route
+      if (req.nextUrl.pathname !== `/lsa/${dotLsaLocation}/view`) {
+        // Redirect railtel users to the railtel view route
+        return NextResponse.redirect(
+          new URL(`/lsa/${dotLsaLocation}/view`, req.url)
+        );
+      }
     }
   },
   {

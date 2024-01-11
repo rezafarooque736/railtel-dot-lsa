@@ -8,7 +8,7 @@ export const SignUpFormSchemaBackend = z.object({
     .string()
     .min(1, "Password is required")
     .min(8, "Password must be at least 8 characters"),
-  dot_Lsa_Location: z.string().min(1, "Please select a Location"), // Assuming dot_Lsa
+  dot_lsa_location: z.string().min(1, "Please select a Location"), // Assuming dot_Lsa
 });
 
 export const SignUpFormSchemaFrontend = z
@@ -20,7 +20,7 @@ export const SignUpFormSchemaFrontend = z
       .min(1, "Password is required")
       .min(8, "Password must be at least 8 characters"),
     confirmPassword: z.string().min(1, "Password confirmation is required"),
-    dot_Lsa_Location: z.string().min(1, "Please select a Location"), // Assuming dot_Lsa
+    dot_lsa_location: z.string().min(1, "Please select a Location"), // Assuming dot_Lsa
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],

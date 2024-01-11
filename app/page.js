@@ -1,7 +1,7 @@
 import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import Title from "@/components/helpers/title";
-import { dotLsaList } from "@/data";
+import { locationList } from "@/data";
 import Link from "next/link";
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
           <Title>List of DOT LSA in India</Title>
         </div>
         <div className="flex flex-wrap gap-3 mx-8">
-          {dotLsaList.map((lsa) => (
+          {locationList.map((lsa) => (
             <Button key={lsa.value} variant="outline" asChild>
               <Link href={`/lsa/${lsa.value}/view`}>{lsa.label}</Link>
             </Button>

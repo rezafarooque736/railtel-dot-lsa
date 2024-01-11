@@ -1,4 +1,5 @@
-export const dotLsaList = [
+export const locationList = [
+  { label: "RailTel (Internal User Only)", value: "railtel" },
   { label: "DGT HQ", value: "dgt_hq" },
   { label: "Andhra Pradesh", value: "andhra_pradesh" },
   { label: "Assam", value: "assam" },

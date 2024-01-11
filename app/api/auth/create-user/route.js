@@ -6,7 +6,7 @@ import { SignUpFormSchemaBackend } from "@/schema";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, email, password, dot_Lsa_Location } =
+    const { name, email, password, dot_lsa_location } =
       SignUpFormSchemaBackend.parse(body);
 
     const existingUserByEmail = await db.user.findUnique({
@@ -34,7 +34,7 @@ export async function POST(req) {
         name,
         email,
         password: hashedPassword,
-        dotLsaLocation: dot_Lsa_Location,
+        dotLsaLocation: dot_lsa_location,
       },
     });
 
