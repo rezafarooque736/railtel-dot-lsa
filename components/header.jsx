@@ -19,7 +19,7 @@ export default function Header() {
     if (pathname !== "/auth/sign-in" && sessionStatus === "unauthenticated") {
       router.replace("/auth/sign-in?callbackUrl=/");
     }
-  }, [sessionStatus, router]);
+  }, [sessionStatus, router, pathname]);
 
   return (
     <header
