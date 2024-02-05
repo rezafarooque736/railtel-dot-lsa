@@ -1,4 +1,4 @@
-export const locationList = [
+export const stateList = [
   { label: "RailTel (Internal User Only)", value: "railtel" },
   { label: "DGT HQ", value: "dgt_hq" },
   { label: "Andhra Pradesh", value: "andhra_pradesh" },
@@ -23,4 +23,20 @@ export const locationList = [
   { label: "Uttar Pradesh (East)", value: "uttar_pradesh_east" },
   { label: "Uttar Pradesh (West)", value: "uttar_pradesh_west" },
   { label: "West Bengal", value: "west_bengal" },
+];
+
+export const routing_protocols = [
+  { label: "RIP", value: "rip" },
+  { label: "IGRP", value: "igrp" },
+  { label: "EIGRP", value: "EIGRP" },
+  { label: "OSPF", value: "ospf" },
+  { label: "EGP", value: "egp" },
+  { label: "BGP", value: "bgp" },
+  { label: "IS-IS", value: "is_is" },
+];
+
+export const network_carriage_services = [
+  { label: "ISP", value: "isp" },
+  { label: "NLD", value: "nld" },
+  { label: "ILD", value: "ild" },
 ];

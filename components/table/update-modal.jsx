@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -31,6 +30,7 @@ import DatePickerComponent from "../helpers/date-picker-component";
 import { updateLSAData } from "@/services";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { network_carriage_services, stateList } from "@/data";
 
 export default function UpdateModal({
   open,
@@ -189,9 +189,23 @@ export default function UpdateModal({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>State</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter State" {...field} />
-                      </FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select State" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {stateList.map((state) => (
+                            <SelectItem key={state.value} value={state.value}>
+                              {state.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -262,9 +276,14 @@ export default function UpdateModal({
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="isp">ISP</SelectItem>
-                          <SelectItem value="nld">NLD</SelectItem>
-                          <SelectItem value="ild">ILD</SelectItem>
+                          {network_carriage_services.map((service) => (
+                            <SelectItem
+                              key={service.value}
+                              value={service.value}
+                            >
+                              {service.label}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                       <FormMessage />

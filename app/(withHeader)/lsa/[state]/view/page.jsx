@@ -1,5 +1,6 @@
-import { lsaColumns } from "@/components/table/Columns";
-import { DataTable } from "@/components/table/DataTable";
+// import { lsaColumns } from "@/components/table/columns";
+import { columns } from "@/components/table/columns";
+import { DataTable } from "@/components/table/data-table";
 import { getLSAData } from "@/services";
 
 export default async function Page({ params: { state } }) {
@@ -8,7 +9,7 @@ export default async function Page({ params: { state } }) {
     <div className="w-screen h-full px-10">
       <div className="h-full">
         <DataTable
-          columns={lsaColumns}
+          columns={columns}
           data={lsaData}
           tableHeaderText="IBW Customer list"
         />

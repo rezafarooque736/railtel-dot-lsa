@@ -31,7 +31,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-import { locationList } from "@/data";
+import { stateList } from "@/data";
 
 const SignUpForm = () => {
   const router = useRouter();
@@ -160,7 +160,7 @@ const SignUpForm = () => {
                         )}
                       >
                         {field.value
-                          ? locationList.find(
+                          ? stateList.find(
                               (dotlsa) => dotlsa.value === field.value
                             )?.label
                           : "Select location"}
@@ -177,7 +177,7 @@ const SignUpForm = () => {
                       <CommandList>
                         <CommandEmpty>No location found.</CommandEmpty>
                         <CommandGroup>
-                          {locationList.map((dotlsa) => (
+                          {stateList.map((dotlsa) => (
                             <CommandItem
                               value={dotlsa.label}
                               key={dotlsa.value}
