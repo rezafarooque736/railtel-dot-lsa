@@ -3,12 +3,12 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, { params: { state } }) {
   try {
-    let dotLsaSateData;
+    let dotLsaStateData;
     // when state is railtel returns all data, if any other location returns data based on state.
     if (state === "railtel") {
-      dotLsaSateData = await db.dotlsa.findMany();
+      dotLsaStateData = await db.dotlsa.findMany();
     } else {
-      dotLsaSateData = await db.dotlsa.findMany({
+      dotLsaStateData = await db.dotlsa.findMany({
         where: {
           state,
         },
@@ -19,7 +19,7 @@ export async function GET(req, { params: { state } }) {
       type: "success",
       message: "Data fetched successfully",
       success: true,
-      data: dotLsaSateData,
+      data: dotLsaStateData,
     });
   } catch (error) {
     console.error(error);
