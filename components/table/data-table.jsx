@@ -26,6 +26,7 @@ import { Pencil2Icon } from "@radix-ui/react-icons";
 import { DataTableToolbar } from "./data-table-toolbar";
 import { DataTablePagination } from "./data-table-pagination";
 import { useSession } from "next-auth/react";
+import { cn } from "@/lib/utils";
 
 export function DataTable({ columns, data, tableHeaderText }) {
   const [selectedRow, setSelectedRow] = useState(null);
@@ -98,7 +99,11 @@ export function DataTable({ columns, data, tableHeaderText }) {
           globalFilter={globalFilter}
           setGlobalFilter={setGlobalFilter}
         />
-        <h1 className="text-lg font-semibold text-slate-700">
+        <h1
+          className={cn("font-semibold text-slate-600", {
+            hidden: session?.user?.role !== "admin",
+          })}
+        >
           {tableHeaderText}
         </h1>
       </div>

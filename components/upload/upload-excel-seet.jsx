@@ -55,7 +55,7 @@ export default function UploadExcelSeet() {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="px-3 py-1 text-base font-semibold uppercase border hover:rounded-lg bg-zinc-100 text-slate-800 hover:text-slate-800 hover:bg-white hover:border-slate-400"
+          className="items-center px-3 py-2 text-sm font-semibold uppercase border hover:rounded-lg bg-zinc-100 text-slate-800 hover:text-slate-800 hover:bg-white hover:border-slate-400"
         >
           Upload Excel Sheet
         </Button>

@@ -34,36 +34,40 @@ export default function Header() {
         <Link href="/">
           <LogoIcons />
         </Link>
-        <nav className="flex items-center gap-8 text-base uppercase">
-          <div
-            className={cn("flex gap-4", {
-              hidden: session?.user?.role !== "admin",
-            })}
-          >
-            <Link
-              href={"/"}
-              className="px-3 py-1 border hover:rounded-lg hover:bg-white hover:border-slate-400"
-            >
-              Home
-            </Link>
-            <UploadExcelSeet />
-            <Link
-              href={"/create-user"}
-              className="px-3 py-1 border hover:rounded-lg hover:bg-white hover:border-slate-400"
-            >
-              CREATE USER
-            </Link>
+        <nav className="flex items-center gap-8 text-base">
+          <div className={"flex gap-4 text-sm items-center"}>
+            {session?.user?.role === "admin" ? (
+              <>
+                <Link
+                  href={"/"}
+                  className="px-3 py-2 border hover:rounded-lg hover:bg-white hover:border-slate-400"
+                >
+                  Home
+                </Link>
+                <UploadExcelSeet />
+                <Link
+                  href={"/create-user"}
+                  className="px-3 py-2 border hover:rounded-lg hover:bg-white hover:border-slate-400"
+                >
+                  CREATE USER
+                </Link>
+              </>
+            ) : (
+              <h2 className="text-base font-semibold">
+                RailTel IBW Customer List
+              </h2>
+            )}
           </div>
-          {session?.user ? (
-            <div className="flex flex-col items-center gap-1 text-[.6rem] font-medium">
-              <SignOutButton />
-            </div>
-          ) : (
-            <Button asChild>
-              <Link href="/auth/sign-in">Sign in</Link>
-            </Button>
-          )}
         </nav>
+        {session?.user ? (
+          <div className="flex flex-col items-center gap-1 text-[.6rem] font-medium">
+            <SignOutButton />
+          </div>
+        ) : (
+          <Button asChild>
+            <Link href="/auth/sign-in">Sign in</Link>
+          </Button>
+        )}
       </div>
     </header>
   );

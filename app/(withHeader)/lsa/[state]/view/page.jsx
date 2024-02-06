@@ -11,7 +11,7 @@ export default async function Page({ params: { state } }) {
         <DataTable
           columns={columns}
           data={lsaData}
-          tableHeaderText="IBW Customer list"
+          tableHeaderText="RailTel IBW Customer list"
         />
       </div>
     </div>
