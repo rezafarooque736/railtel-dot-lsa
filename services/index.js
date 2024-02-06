@@ -12,6 +12,7 @@ export async function getLSAData(state) {
 }
 
 export async function updateLSAData(data) {
+  console.log(data);
   const res = await fetch("/api/lsa/update-data", {
     method: "PUT",
     headers: {

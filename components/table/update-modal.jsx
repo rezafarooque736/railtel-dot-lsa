@@ -30,7 +30,11 @@ import DatePickerComponent from "../helpers/date-picker-component";
 import { updateLSAData } from "@/services";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { network_carriage_services, stateList } from "@/data";
+import {
+  network_carriage_services,
+  routing_protocols,
+  stateList,
+} from "@/data";
 
 export default function UpdateModal({
   open,
@@ -74,7 +78,7 @@ export default function UpdateModal({
     values.date_since_network_ip_address = date_since_network_ip_address;
     values.date_since_other_ip_address = date_since_other_ip_address;
     values.id = row.id;
-    const res = await updateLSAData(values);
+    await updateLSAData(values);
 
     closeUpdateModal();
     router.refresh();
@@ -237,12 +241,26 @@ export default function UpdateModal({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Routing Protocol</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Enter Routing Protocol"
-                          {...field}
-                        />
-                      </FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select Routing Protocol" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {routing_protocols.map((r_protocols) => (
+                            <SelectItem
+                              key={r_protocols.value}
+                              value={r_protocols.value}
+                            >
+                              {r_protocols.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -276,12 +294,12 @@ export default function UpdateModal({
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          {network_carriage_services.map((service) => (
+                          {network_carriage_services.map((c_service) => (
                             <SelectItem
-                              key={service.value}
-                              value={service.value}
+                              key={c_service.value}
+                              value={c_service.value}
                             >
-                              {service.label}
+                              {c_service.label}
                             </SelectItem>
                           ))}
                         </SelectContent>

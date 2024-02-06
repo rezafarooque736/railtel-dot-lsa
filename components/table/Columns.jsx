@@ -152,7 +152,7 @@ export const columns = [
 
       return (
         <div className="text-sm text-center text-slate-800 w-max">
-          {formattedDate}
+          {formattedDate.replaceAll("-", " ")}
         </div>
       );
     },

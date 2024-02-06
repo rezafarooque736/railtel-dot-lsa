@@ -19,7 +19,7 @@ export async function PUT(req) {
         state: data.state,
         routing_protocol: data.routing_protocol,
         bandwidth: data.bandwidth,
-        type: data.type,
+        network_carriage_service: data.network_carriage_service,
         date_since_network_ip_address: data.date_since_network_ip_address,
         date_since_other_ip_address: data.date_since_other_ip_address,
       },

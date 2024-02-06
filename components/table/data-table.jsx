@@ -20,14 +20,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-// import ui components
-import { Button } from "@/components/ui/button";
-
 import { useState } from "react";
 import UpdateModal from "./update-modal";
 import { Pencil2Icon } from "@radix-ui/react-icons";
 import { DataTableToolbar } from "./data-table-toolbar";
 import { DataTablePagination } from "./data-table-pagination";
+import { useSession } from "next-auth/react";
 
 export function DataTable({ columns, data, tableHeaderText }) {
   const [selectedRow, setSelectedRow] = useState(null);
@@ -38,6 +36,8 @@ export function DataTable({ columns, data, tableHeaderText }) {
   const [columnVisibility, setColumnVisibility] = useState({});
   const [columnFilters, setColumnFilters] = useState([]);
   const [sorting, setSorting] = useState([]);
+
+  const { data: session } = useSession();
 
   const handleUpdateButtonClick = (row) => {
     setOpenModal(true);
@@ -51,21 +51,24 @@ export function DataTable({ columns, data, tableHeaderText }) {
 
   const table = useReactTable({
     data,
-    columns: [
-      ...columns,
-      {
-        accessorKey: "update",
-        header: () => <div className="text-xs text-center">Action</div>,
-        cell: ({ row }) => (
-          <div
-            className="border cursor-pointer hover:text-primary w-max"
-            onClick={() => handleUpdateButtonClick(row.original)}
-          >
-            <Pencil2Icon className="w-4 h-4" />
-          </div>
-        ),
-      },
-    ],
+    columns:
+      session?.user?.role === "admin"
+        ? [
+            ...columns,
+            {
+              accessorKey: "update",
+              header: () => <div className="text-xs text-center">Action</div>,
+              cell: ({ row }) => (
+                <div
+                  className="border cursor-pointer hover:text-primary w-max"
+                  onClick={() => handleUpdateButtonClick(row.original)}
+                >
+                  <Pencil2Icon className="w-4 h-4" />
+                </div>
+              ),
+            },
+          ]
+        : [...columns],
     state: {
       globalFilter,
       sorting,
