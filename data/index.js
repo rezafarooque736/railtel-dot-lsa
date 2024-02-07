@@ -26,13 +26,14 @@ export const stateList = [
 ];
 
 export const routing_protocols = [
-  { label: "RIP", value: "rip" },
-  { label: "IGRP", value: "igrp" },
-  { label: "EIGRP", value: "EIGRP" },
-  { label: "OSPF", value: "ospf" },
-  { label: "EGP", value: "egp" },
   { label: "BGP", value: "bgp" },
+  { label: "EGP", value: "egp" },
+  { label: "EIGRP", value: "EIGRP" },
+  { label: "IGRP", value: "igrp" },
   { label: "IS-IS", value: "is_is" },
+  { label: "OSPF", value: "ospf" },
+  { label: "RIP", value: "rip" },
+  { label: "STATIC", value: "static" },
 ];
 
 export const network_carriage_services = [
