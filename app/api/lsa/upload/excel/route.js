@@ -63,7 +63,7 @@ export async function POST(req) {
           email: item.email,
           phone_no: item.phone_no.toString(),
           address: item.address,
-          state: item.state,
+          state: item.state.toLowerCase(),
         };
 
         if (item.service_id) {
@@ -81,11 +81,12 @@ export async function POST(req) {
         }
 
         if (item.network_carriage_service) {
-          dataObject.network_carriage_service = item.network_carriage_service;
+          dataObject.network_carriage_service =
+            item.network_carriage_service.toLowerCase();
         }
 
         if (item.routing_protocol) {
-          dataObject.routing_protocol = item.routing_protocol;
+          dataObject.routing_protocol = item.routing_protocol.toLowerCase();
         }
 
         await db.dotlsa.create({
