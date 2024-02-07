@@ -161,7 +161,7 @@ export const columns = [
   {
     accessorKey: "routing_protocol",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Routing Protocol" />
+      <DataTableColumnHeader column={column} title="Routing" />
     ),
     cell: ({ row }) => {
       const routing_protocol = routing_protocols.find(

@@ -34,7 +34,7 @@ export function DataTableToolbar({ table, globalFilter, setGlobalFilter }) {
         {table.getColumn("routing_protocol") && (
           <DataTableFacetedFilter
             column={table.getColumn("routing_protocol")}
-            title="Routing Protocol"
+            title="Routing"
             options={routing_protocols}
           />
         )}

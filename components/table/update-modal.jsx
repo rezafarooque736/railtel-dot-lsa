@@ -240,7 +240,7 @@ export default function UpdateModal({
                   name="routing_protocol"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Routing Protocol</FormLabel>
+                      <FormLabel>Routing</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
