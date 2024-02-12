@@ -15,6 +15,8 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
 
+  console.log({ session });
+
   useEffect(() => {
     if (pathname !== "/auth/sign-in" && sessionStatus === "unauthenticated") {
       router.replace("/auth/sign-in?callbackUrl=/");
@@ -36,7 +38,8 @@ export default function Header() {
         </Link>
         <nav className="flex items-center gap-8 text-base">
           <div className={"flex gap-4 text-sm items-center"}>
-            {session?.user?.role === "admin" ? (
+            {session?.user?.role === "admin" &&
+            session?.user?.dotLsaLocation === "railtel" ? (
               <>
                 <Link
                   href={"/"}

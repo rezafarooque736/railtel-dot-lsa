@@ -3,17 +3,23 @@ import { NextResponse } from "next/server";
 
 export default withAuth(
   function middleware(req) {
-    const { token } = req.nextauth;
-    const { dotLsaLocation } = req.nextauth.token;
+    const { role } = req.nextauth.token;
+    const { dotLsaLocation: state } = req.nextauth.token;
 
     // Check if the user has the "admin" role
-    if (token?.role !== "admin") {
+    if (state === "railtel" && role !== "admin") {
       // Check if the user is trying to access the railtel view route
-      if (req.nextUrl.pathname !== `/lsa/${dotLsaLocation}/view`) {
+      if (req.nextUrl.pathname !== `/lsa/${state}/view`) {
         // Redirect railtel users to the railtel view route
-        return NextResponse.redirect(
-          new URL(`/lsa/${dotLsaLocation}/view`, req.url)
-        );
+        return NextResponse.redirect(new URL(`/lsa/${state}/view`, req.url));
+      }
+    }
+
+    if (state !== "railtel") {
+      // Check if the user is trying to access the railtel view route
+      if (req.nextUrl.pathname !== `/lsa/${state}/view`) {
+        // Redirect railtel users to the railtel view route
+        return NextResponse.redirect(new URL(`/lsa/${state}/view`, req.url));
       }
     }
   },
