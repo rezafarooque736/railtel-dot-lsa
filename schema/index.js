@@ -9,6 +9,9 @@ export const SignUpFormSchemaBackend = z.object({
     .min(1, "Password is required")
     .min(8, "Password must be at least 8 characters"),
   dot_lsa_location: z.string().min(1, "Please select a Location"), // Assuming dot_Lsa
+  role: z.enum(["user", "admin"], {
+    required_error: "You must have to select a Role",
+  }),
 });
 
 export const SignUpFormSchemaFrontend = z
@@ -21,6 +24,9 @@ export const SignUpFormSchemaFrontend = z
       .min(8, "Password must be at least 8 characters"),
     confirmPassword: z.string().min(1, "Password confirmation is required"),
     dot_lsa_location: z.string().min(1, "Please select a Location"), // Assuming dot_Lsa
+    role: z.enum(["user", "admin"], {
+      required_error: "You must have to select a Role",
+    }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],

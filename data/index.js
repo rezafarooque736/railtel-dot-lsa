@@ -1,6 +1,5 @@
 export const stateList = [
   { label: "RailTel (Internal User Only)", value: "railtel" },
-  { label: "DGT HQ", value: "dgt_hq" },
   { label: "Andhra Pradesh", value: "andhra_pradesh" },
   { label: "Assam", value: "assam" },
   { label: "Bihar", value: "bihar" },
@@ -40,4 +39,9 @@ export const network_carriage_services = [
   { label: "ISP", value: "isp" },
   { label: "NLD", value: "nld" },
   { label: "ILD", value: "ild" },
+];
+
+export const roles = [
+  { label: "USER", value: "user" },
+  { label: "ADMIN", value: "admin" },
 ];

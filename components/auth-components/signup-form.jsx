@@ -31,7 +31,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-import { stateList } from "@/data";
+import { roles, stateList } from "@/data";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const SignUpForm = () => {
   const router = useRouter();
@@ -43,10 +44,12 @@ const SignUpForm = () => {
       password: "",
       confirmPassword: "",
       dot_lsa_location: "", // Default value for dot_lsa_location
+      role: "user",
     },
   });
 
   const onSubmit = async (values) => {
+    console.log(values);
     const res = await fetch("/api/auth/create-user", {
       method: "POST",
       headers: {
@@ -57,6 +60,7 @@ const SignUpForm = () => {
         email: values.email,
         password: values.password,
         dot_lsa_location: values.dot_lsa_location,
+        role: values.role,
       }),
     });
 
@@ -131,6 +135,37 @@ const SignUpForm = () => {
                     type="password"
                     {...field}
                   />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="role"
+            render={({ field }) => (
+              <FormItem className="flex items-center py-2 space-x-3 space-y-0">
+                <FormLabel>User Role</FormLabel>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className="flex space-x-1"
+                  >
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="user" />
+                      </FormControl>
+                      <FormLabel className="font-normal">User</FormLabel>
+                    </FormItem>
+                    <FormItem className="flex items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <RadioGroupItem value="admin" />
+                      </FormControl>
+                      <FormLabel className="font-normal">Admin</FormLabel>
+                    </FormItem>
+                  </RadioGroup>
                 </FormControl>
                 <FormMessage />
               </FormItem>
